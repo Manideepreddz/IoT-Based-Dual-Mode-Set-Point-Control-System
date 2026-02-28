@@ -23,23 +23,17 @@ The configuration is stored in EEPROM to ensure persistence after power loss.
 • Implement interrupt-based local configuration
 
 🧠 System Architecture
+
           LM35 Temperature Sensor
-                   │
                    ▼
              ADC (LPC2148)
-                   │
                    ▼
            LPC2148 ARM7 MCU
-            │        │
-            │        ├── EEPROM (Store Set Point)
-            │        │
-            │        ├── Keypad (Local Control)
-            │        │
-            │        ├── Buzzer (Alert)
-            │        │
-            ▼        ▼
+                     ├── EEPROM (Store Set Point)
+                     ├── Keypad (Local Control)
+                     ├── Buzzer (Alert)
+                     ▼
          ESP8266 WiFi Module
-                   │
                    ▼
              ThingSpeak Cloud
              
