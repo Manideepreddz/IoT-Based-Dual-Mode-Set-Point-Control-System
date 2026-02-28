@@ -120,9 +120,6 @@ ThingSpeak is used for:
 • Remote set point configuration
 • Data logging
 
-Example API:
-
-https://api.thingspeak.com/update?api_key=YOUR_API_KEY&field1=temperature
 
 🧾 Firmware Modules
 
@@ -162,13 +159,13 @@ ESP_GetSetPoint()
 
 🔄 System Flowchart
 
-Start
+1.Start
   │
-Initialize System
+2.Initialize System
   │
-Read EEPROM Set Point
+3.Read EEPROM Set Point
   │
-Read Temperature from LM35
+4.Read Temperature from LM35
   │
 Send Data to ThingSpeak
   │
