@@ -160,32 +160,23 @@ ESP_GetSetPoint()
 🔄 System Flowchart
 
 1.Start
-  │
 2.Initialize System
-  │
 3.Read EEPROM Set Point
-  │
 4.Read Temperature from LM35
-  │
 Send Data to ThingSpeak
-  │
-Read Set Point from Cloud
-  │
-Compare Temperature with Set Point
-  │
-Temperature > Set Point ?
-   │        │
-  YES       NO
-   │        │
-Buzzer ON   Buzzer OFF
-   │
-Check Keypad Interrupt
-   │
-Update Set Point
-   │
-Store in EEPROM
-   │
-Repeat
+5.Read Set Point from Cloud
+
+6.Compare Temperature with Set Point
+  
+7.Temperature > Set Point ? Buzzer ON :Buzzer OFF
+
+8.Check Keypad Interrupt
+   
+9.Update Set Point
+   
+10.Store in EEPROM
+   
+11.Repeat
 
 🚀 Key Features 
 
