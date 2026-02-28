@@ -239,13 +239,9 @@ ESP_Init()
 ----------------------------------------
 
                            1.Start
-
-                              ▼
-          
+                              ▼          
                        2.Initialize System
-
-                              ▼
-          
+                              ▼          
                      3.Read EEPROM Set Point
    
                               ▼
