@@ -83,6 +83,7 @@ Component	Description
 The system works in the following sequence:
 
 Step 1: Temperature Acquisition
+----------------------------------------
 
 The LM35 sensor outputs analog voltage proportional to temperature:
 
@@ -92,15 +93,17 @@ Example:
 250 mV = 25°C
 
 This analog voltage is converted into digital value using LPC2148 ADC.
-----------------------------------------
+
 
 Step 2: Temperature Processing
+----------------------------------------
 
 The LPC2148 reads ADC value and converts it into temperature using formula:
 
 Temp = (ADC_value × 3.3 × 100) / 1024
-----------------------------------------
+
 Step 3: Set Point Comparison
+----------------------------------------
 
 The system compares:
 
@@ -115,6 +118,7 @@ else
    
 
 Step 4: Local Set Point Configuration
+----------------------------------------
 
 User enters new set point using keypad.
 
@@ -128,6 +132,7 @@ Steps:
 
 
 Step 5: Remote Monitoring and Control
+----------------------------------------
 
 ESP8266 connects to WiFi and communicates with ThingSpeak using UART.
 
@@ -137,6 +142,7 @@ Functions:
 
 
 Communication protocol used:
+----------------------------------------
 
 AT Commands
 
@@ -148,6 +154,7 @@ AT+CIPSTART="TCP","api.thingspeak.com",80
 
 
 Step 6: EEPROM Storage
+----------------------------------------
 
 EEPROM stores set point value permanently.
 
@@ -157,6 +164,7 @@ Set point remains same
 
 
 Step 7: Alert Mechanism
+----------------------------------------
 
 If temperature exceeds set point:
 • Buzzer turns ON
