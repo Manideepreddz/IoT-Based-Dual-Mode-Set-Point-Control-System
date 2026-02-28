@@ -43,15 +43,14 @@ The configuration is stored in EEPROM to ensure persistence after power loss.
 
 Component	Description
 
-LPC2148	ARM7 Microcontroller
-LM35	Temperature Sensor
-ESP8266 (ESP-01)	WiFi Module
-4x4 Keypad	Local Set Point Input
-Buzzer	Alert System
-EEPROM	Store Set Point
-Power Supply	3.3V / 5V regulated
-Crystal Oscillator	12 MHz
-ADC	Built-in LPC2148 ADC
+1)LPC2148	ARM7 Microcontroller.
+2)LM35	Temperature Sensor
+3)ESP8266 (ESP-01)	WiFi Module
+4)4x4 Keypad	Local Set Point Input
+5)Buzzer	Alert System
+6)EEPROM	Store Set Point
+7)Power Supply	3.3V / 5V regulated
+8)ADC	Built-in LPC2148 ADC
 
 🖥 Software Requirements
 
