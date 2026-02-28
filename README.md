@@ -195,47 +195,37 @@ ThingSpeak is used for:
 
 The firmware consists of following modules:
 
-1. ADC Driver
-
-Responsible for temperature reading.
+1. ADC Driver :- Responsible for temperature reading.
 
 Functions:
-ADC_Init(),
-ADC_Read()
+ADC_Init() , 
+ ADC_Read()
 
-2. UART Driver
-
-Used for ESP8266 communication.
+2. UART Driver :- Used for ESP8266 communication.
 
 Functions: 
-UART_Init(),
-UART_Send(),
-UART_Receive()
+UART_Init() ,
+ UART_Send() ,
+ UART_Receive()
 
-4. EEPROM Driver
-
-Store and retrieve set point.
+3. EEPROM Driver :- Store and retrieve set point.
 
 Functions:
 EEPROM_Write(),
-EEPROM_Read()
+ EEPROM_Read()
 
-5. Keypad Driver
-
-Handles keypad input using interrupt.
+4. Keypad Driver :- Handles keypad input using interrupt.
 
 Functions:
 Keypad_Init()
-,Keypad_Read()
+ , Keypad_Read()
 
-6. ESP8266 Driver
-
-Handles IoT communication.
+5. ESP8266 Driver :- Handles IoT communication.
 
 Functions:
 ESP_Init()
-,ESP_SendData()
-,ESP_GetSetPoint()
+ , ESP_SendData()
+ , ESP_GetSetPoint()
 
 
 🔄 System Flowchart
