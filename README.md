@@ -1,11 +1,13 @@
 IoT-Based Dual Mode Set Point Control System using LPC2148
-📌 Overview
+
 
 The IoT-Based Dual Mode Set Point Control System is an embedded system designed to monitor temperature in real time and control threshold values using both local and remote interfaces. The system uses the LPC2148 ARM7 microcontroller as the central processing unit, integrates with the ESP8266 Wi-Fi module for cloud communication, and uses ThingSpeak cloud platform for remote monitoring and configuration.
 
 This project demonstrates the integration of Embedded Systems, IoT, and Real-Time Control Systems.
 
+
 The system  temperature data from the LM35 temperature sensor, compares it with a configurable set point, and activates a buzzer alert when the threshold is exceeded.
+
 
 Users can modify the set point using two modes:
 Local Mode – via Keypad
