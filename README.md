@@ -12,7 +12,7 @@ The system  temperature data from the LM35 temperature sensor, compares it with 
 
 Users can modify the set point using two modes:
 
-Local Mode – via Keypad
+Local Mode – via Keypad 
 
 Remote Mode – via ThingSpeak Cloud
 
