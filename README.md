@@ -11,8 +11,11 @@ The system  temperature data from the LM35 temperature sensor, compares it with 
 
 
 Users can modify the set point using two modes:
+
 Local Mode – via Keypad
+
 Remote Mode – via ThingSpeak Cloud
+
 The configuration is stored in EEPROM to ensure persistence after power loss.
 
 🎯 Objectives
@@ -130,9 +133,13 @@ User enters new set point using keypad.
 Interrupt is used to detect keypad input instantly.
 
 Steps:
+
 • User presses keypad
+
 • Interrupt triggered
+
 • Microcontroller enters configuration mode
+
 • New set point stored in EEPROM
 
 
@@ -197,32 +204,32 @@ The firmware consists of following modules:
 
 1. ADC Driver :- Responsible for temperature reading.
 
-Functions:
+   Functions:
 ADC_Init() , 
  ADC_Read()
 
 2. UART Driver :- Used for ESP8266 communication.
 
-Functions: 
+   Functions: 
 UART_Init() ,
  UART_Send() ,
  UART_Receive()
 
 3. EEPROM Driver :- Store and retrieve set point.
 
-Functions:
+   Functions:
 EEPROM_Write(),
  EEPROM_Read()
 
 4. Keypad Driver :- Handles keypad input using interrupt.
 
-Functions:
+   Functions:
 Keypad_Init()
  , Keypad_Read()
 
 5. ESP8266 Driver :- Handles IoT communication.
 
-Functions:
+   Functions:
 ESP_Init()
  , ESP_SendData()
  , ESP_GetSetPoint()
@@ -232,9 +239,9 @@ ESP_Init()
 ----------------------------------------
 
 1.Start
-
+          ▼
 2.Initialize System
-
+          ▼
 3.Read EEPROM Set Point
 
 4.Read Temperature from LM35 Send Data to ThingSpeak
