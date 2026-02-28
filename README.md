@@ -18,12 +18,20 @@ The configuration is stored in EEPROM to ensure persistence after power loss.
 🎯 Objectives
 
 • Monitor temperature in real time
+
 • Allow user-defined temperature set point
+
 • Enable remote monitoring via cloud
+
 • Enable remote configuration via IoT
+
 • Store configuration permanently in EEPROM
+
 • Provide alert mechanism when threshold exceeds
+
 • Implement interrupt-based local configuration
+
+
 
 🧠 System Architecture
 
