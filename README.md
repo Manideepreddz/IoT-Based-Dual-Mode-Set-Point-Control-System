@@ -16,6 +16,7 @@ Remote Mode – via ThingSpeak Cloud
 The configuration is stored in EEPROM to ensure persistence after power loss.
 
 🎯 Objectives
+----------------------------------------
 
 • Monitor temperature in real time
 
@@ -34,6 +35,7 @@ The configuration is stored in EEPROM to ensure persistence after power loss.
 
 
 🧠 System Architecture
+----------------------------------------
 
           LM35 Temperature Sensor
                    ▼
@@ -49,6 +51,7 @@ The configuration is stored in EEPROM to ensure persistence after power loss.
              ThingSpeak Cloud
              
 🔧 Hardware Components Used
+----------------------------------------
 
 Component	Description
 
@@ -69,6 +72,7 @@ Component	Description
 8)ADC	Built-in LPC2148 ADC
 
 🖥 Software Requirements
+----------------------------------------
 
 • Keil uVision (ARM Compiler)
 
@@ -79,6 +83,7 @@ Component	Description
 • Embedded C Programming
 
 ⚙ Working Principle
+----------------------------------------
 
 The system works in the following sequence:
 
@@ -137,12 +142,13 @@ Step 5: Remote Monitoring and Control
 ESP8266 connects to WiFi and communicates with ThingSpeak using UART.
 
 Functions:
+
 • Upload temperature data to ThingSpeak
+
 • Read set point value from ThingSpeak
 
 
 Communication protocol used:
-----------------------------------------
 
 AT Commands
 
@@ -167,55 +173,73 @@ Step 7: Alert Mechanism
 ----------------------------------------
 
 If temperature exceeds set point:
+
 • Buzzer turns ON
+
 • Alert triggered
 
 📡 Cloud Integration (ThingSpeak)
+----------------------------------------
 
 ThingSpeak is used for:
 
 • Temperature monitoring
+
 • Remote set point configuration
+
 • Data logging
 
 
 🧾 Firmware Modules
+----------------------------------------
 
 The firmware consists of following modules:
+
 1. ADC Driver
+
 Responsible for temperature reading.
+
 Functions:
-ADC_Init()
+ADC_Init(),
 ADC_Read()
 
-3. UART Driver
+2. UART Driver
+
 Used for ESP8266 communication.
-Functions:
-UART_Init()
-UART_Send()
+
+Functions: 
+UART_Init(),
+UART_Send(),
 UART_Receive()
 
 4. EEPROM Driver
+
 Store and retrieve set point.
+
 Functions:
-EEPROM_Write()
+EEPROM_Write(),
 EEPROM_Read()
 
 5. Keypad Driver
+
 Handles keypad input using interrupt.
+
 Functions:
 Keypad_Init()
-Keypad_Read()
+,Keypad_Read()
 
 6. ESP8266 Driver
+
 Handles IoT communication.
+
 Functions:
 ESP_Init()
-ESP_SendData()
-ESP_GetSetPoint()
+,ESP_SendData()
+,ESP_GetSetPoint()
 
 
 🔄 System Flowchart
+----------------------------------------
 
 1.Start
 
@@ -240,20 +264,30 @@ ESP_GetSetPoint()
 11.Repeat
 
 🚀 Key Features 
+----------------------------------------
 
 Dual Mode Control
+
 Mode	Description
+
 Local	User enters set point using keypad
+
 Remote	User updates set point using ThingSpeak
+
 Interrupt Driven System
+
 Interrupt improves performance by avoiding continuous polling.
+
 EEPROM Storage
+
 Ensures permanent storage.
+
 Cloud Monitoring
+
 User can monitor temperature from anywhere.
 
 📊 Advantages
-
+----------------------------------------
 • Real-time monitoring
 
 • Remote access
@@ -267,10 +301,14 @@ User can monitor temperature from anywhere.
 • Scalable design
 
 📍 Applications
-
+----------------------------------------
 • Industrial temperature monitoring
+
 • Smart homes
+
 • Server room monitoring
+
 • Cold storage monitoring
+
 • Laboratory monitoring
 • IoT automation systems
