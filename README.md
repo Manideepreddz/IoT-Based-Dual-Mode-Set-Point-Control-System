@@ -1,37 +1,226 @@
-# IoT-Based-Dual-Mode-Set-Point-Control-System
-IoT-Based Dual Mode Set Point Control System.
-🌡 IoT-Based Dual Mode Set Point Control System
-📌 Project Overview
+IoT-Based Dual Mode Set Point Control System using LPC2148
+📌 Overview
 
-This project implements an IoT-enabled temperature monitoring and threshold control system using LPC2148 ARM7 microcontroller. The system supports both local and remote set point modification with cloud-based monitoring.
+The IoT-Based Dual Mode Set Point Control System is an embedded system designed to monitor temperature in real time and control threshold values using both local and remote interfaces. The system uses the LPC2148 ARM7 microcontroller as the central processing unit, integrates with the ESP8266 Wi-Fi module for cloud communication, and uses ThingSpeak cloud platform for remote monitoring and configuration.
 
-🚀 Features
+This project demonstrates the integration of Embedded Systems, IoT, and Real-Time Control Systems.
 
-Real-time temperature monitoring using LM35
+The system  temperature data from the LM35 temperature sensor, compares it with a configurable set point, and activates a buzzer alert when the threshold is exceeded.
 
-Cloud integration using ESP8266 (ESP-01)
+Users can modify the set point using two modes:
+Local Mode – via Keypad
+Remote Mode – via ThingSpeak Cloud
+The configuration is stored in EEPROM to ensure persistence after power loss.
 
-ThingSpeak data logging
+🎯 Objectives
 
-Dual mode set point control:
+• Monitor temperature in real time
+• Allow user-defined temperature set point
+• Enable remote monitoring via cloud
+• Enable remote configuration via IoT
+• Store configuration permanently in EEPROM
+• Provide alert mechanism when threshold exceeds
+• Implement interrupt-based local configuration
 
-Local via keypad
+🧠 System Architecture
+          LM35 Temperature Sensor
+                   │
+                   ▼
+             ADC (LPC2148)
+                   │
+                   ▼
+           LPC2148 ARM7 MCU
+            │        │
+            │        ├── EEPROM (Store Set Point)
+            │        │
+            │        ├── Keypad (Local Control)
+            │        │
+            │        ├── Buzzer (Alert)
+            │        │
+            ▼        ▼
+         ESP8266 WiFi Module
+                   │
+                   ▼
+             ThingSpeak Cloud
+             
+🔧 Hardware Components Used
 
-Remote via cloud
+Component	Description
 
-EEPROM-based configuration storage
+LPC2148	ARM7 Microcontroller
+LM35	Temperature Sensor
+ESP8266 (ESP-01)	WiFi Module
+4x4 Keypad	Local Set Point Input
+Buzzer	Alert System
+EEPROM	Store Set Point
+Power Supply	3.3V / 5V regulated
+Crystal Oscillator	12 MHz
+ADC	Built-in LPC2148 ADC
 
-Buzzer alert on threshold exceed
+🖥 Software Requirements
 
-Interrupt-driven local configuration
+• Keil uVision (ARM Compiler)
+• Flash Magic (Program Uploading)
+• ThingSpeak Cloud Account
+• Embedded C Programming
 
-Optimized cloud polling mechanism
+⚙ Working Principle
 
-🏗 System Architecture
-LM35 → ADC → LPC2148 → ESP01 → ThingSpeak Cloud
-                 ↓
-              EEPROM
-                 ↓
-             Keypad (Local)
-                 ↓
-              Buzzer Alert
+The system works in the following sequence:
+
+Step 1: Temperature Acquisition
+The LM35 sensor outputs analog voltage proportional to temperature:
+Temperature (°C) = Voltage (mV) / 10
+Example:
+250 mV = 25°C
+This analog voltage is converted into digital value using LPC2148 ADC.
+
+Step 2: Temperature Processing
+The LPC2148 reads ADC value and converts it into temperature using formula:
+Temp = (ADC_value × 3.3 × 100) / 1024
+
+Step 3: Set Point Comparison
+The system compares:
+if(Current Temperature > Set Point)
+   Activate Buzzer
+else
+   Normal Operation
+   
+Step 4: Local Set Point Configuration
+User enters new set point using keypad.
+Interrupt is used to detect keypad input instantly.
+Steps:
+• User presses keypad
+• Interrupt triggered
+• Microcontroller enters configuration mode
+• New set point stored in EEPROM
+
+Step 5: Remote Monitoring and Control
+ESP8266 connects to WiFi and communicates with ThingSpeak using UART.
+Functions:
+• Upload temperature data to ThingSpeak
+• Read set point value from ThingSpeak
+
+Communication protocol used:
+AT Commands
+UART Serial Communication
+Example AT Command:
+AT+CIPSTART="TCP","api.thingspeak.com",80
+
+Step 6: EEPROM Storage
+EEPROM stores set point value permanently.
+Even after power OFF/ON:
+Set point remains same
+
+Step 7: Alert Mechanism
+If temperature exceeds set point:
+• Buzzer turns ON
+• Alert triggered
+
+📡 Cloud Integration (ThingSpeak)
+
+ThingSpeak is used for:
+
+• Temperature monitoring
+• Remote set point configuration
+• Data logging
+
+Example API:
+
+https://api.thingspeak.com/update?api_key=YOUR_API_KEY&field1=temperature
+
+🧾 Firmware Modules
+
+The firmware consists of following modules:
+1. ADC Driver
+Responsible for temperature reading.
+Functions:
+ADC_Init()
+ADC_Read()
+
+3. UART Driver
+Used for ESP8266 communication.
+Functions:
+UART_Init()
+UART_Send()
+UART_Receive()
+
+4. EEPROM Driver
+Store and retrieve set point.
+Functions:
+EEPROM_Write()
+EEPROM_Read()
+
+5. Keypad Driver
+Handles keypad input using interrupt.
+Functions:
+Keypad_Init()
+Keypad_Read()
+
+6. ESP8266 Driver
+Handles IoT communication.
+Functions:
+ESP_Init()
+ESP_SendData()
+ESP_GetSetPoint()
+
+
+🔄 System Flowchart
+Start
+  │
+Initialize System
+  │
+Read EEPROM Set Point
+  │
+Read Temperature from LM35
+  │
+Send Data to ThingSpeak
+  │
+Read Set Point from Cloud
+  │
+Compare Temperature with Set Point
+  │
+Temperature > Set Point ?
+   │        │
+  YES       NO
+   │        │
+Buzzer ON   Buzzer OFF
+   │
+Check Keypad Interrupt
+   │
+Update Set Point
+   │
+Store in EEPROM
+   │
+Repeat
+
+🚀 Key Features 
+
+Dual Mode Control
+Mode	Description
+Local	User enters set point using keypad
+Remote	User updates set point using ThingSpeak
+Interrupt Driven System
+Interrupt improves performance by avoiding continuous polling.
+EEPROM Storage
+Ensures permanent storage.
+Cloud Monitoring
+User can monitor temperature from anywhere.
+
+📊 Advantages
+
+• Real-time monitoring
+• Remote access
+• Low power consumption
+• Reliable system
+• Permanent configuration storage
+• Scalable design
+
+📍 Applications
+
+• Industrial temperature monitoring
+• Smart homes
+• Server room monitoring
+• Cold storage monitoring
+• Laboratory monitoring
+• IoT automation systems
