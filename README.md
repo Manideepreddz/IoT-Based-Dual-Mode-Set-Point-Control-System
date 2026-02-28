@@ -71,8 +71,11 @@ Component	Description
 🖥 Software Requirements
 
 • Keil uVision (ARM Compiler)
+
 • Flash Magic (Program Uploading)
+
 • ThingSpeak Cloud Account
+
 • Embedded C Programming
 
 ⚙ Working Principle
@@ -89,14 +92,14 @@ Example:
 250 mV = 25°C
 
 This analog voltage is converted into digital value using LPC2148 ADC.
-
+----------------------------------------
 
 Step 2: Temperature Processing
 
 The LPC2148 reads ADC value and converts it into temperature using formula:
 
 Temp = (ADC_value × 3.3 × 100) / 1024
-
+----------------------------------------
 Step 3: Set Point Comparison
 
 The system compares:
