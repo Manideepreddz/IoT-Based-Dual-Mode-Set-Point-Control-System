@@ -238,27 +238,47 @@ ESP_Init()
 🔄 System Flowchart
 ----------------------------------------
 
-1.Start
-          ▼
-2.Initialize System
-          ▼
-3.Read EEPROM Set Point
+                           1.Start
 
-4.Read Temperature from LM35 Send Data to ThingSpeak
+                              ▼
+          
+                       2.Initialize System
 
-5.Read Set Point from Cloud
+                              ▼
+          
+                     3.Read EEPROM Set Point
+   
+                              ▼
+          
+          4.Read Temperature from LM35 Send Data to ThingSpeak
 
-6.Compare Temperature with Set Point
+                              ▼
+
+                    5.Read Set Point from Cloud
+
+                              ▼
+
+              6.Compare Temperature with Set Point
+
+                              ▼
   
-7.Temperature > Set Point ? Buzzer ON :Buzzer OFF
+          7.Temperature > Set Point ? Buzzer ON :Buzzer OFF
 
-8.Check Keypad Interrupt
+                              ▼
+
+                    8.Check Keypad Interrupt
+
+                              ▼
    
-9.Update Set Point
+                      9.Update Set Point
+
+                              ▼
    
-10.Store in EEPROM
+                      10.Store in EEPROM
+
+                              ▼
    
-11.Repeat
+                         11.Repeat
 
 🚀 Key Features 
 ----------------------------------------
